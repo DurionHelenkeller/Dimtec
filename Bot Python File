@@ -1,1 +1,15 @@
+import requests
 
+def header_grabber(url, useragent):
+    response = requests.get(url, headers={'user-agent': useragent})
+    headers = response.headers
+    print(f"statuscode {response}\n")
+    #print(f"body \n {response.text}\n")
+    for header in headers:
+        print(f"{header}: {headers[header]}")
+url = input("Enter the URL: ")
+useragent = input("Put in User Agent: ")
+times = int(input("How many times to run? "))
+
+for i in range(times):
+    header_grabber(url, useragent)
